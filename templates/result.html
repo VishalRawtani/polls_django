@@ -1,0 +1,9 @@
+{% extends "base.html" %}
+{% block content %}
+
+<h3>{{poll.question}}</h3>
+{{poll.choice1}} - {{poll.choice1_count}} <br>
+{{poll.choice2}} - {{poll.choice2_count}} <br>
+{{poll.choice3}} - {{poll.choice3_count}} <br>
+
+{% endblock content %}

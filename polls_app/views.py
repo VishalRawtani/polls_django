@@ -16,6 +16,12 @@ class PollsDetailView(DetailView):
     context_object_name = "poll"
 
 
+class ResultView(DetailView):
+    model = Polls
+    template_name = "result.html"
+    context_object_name = "poll"
+
+
 class PollsCreateView(CreateView):
     model = Polls
     template_name = "polls_create.html"

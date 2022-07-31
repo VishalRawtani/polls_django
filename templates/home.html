@@ -3,11 +3,13 @@
 
 <h3>Polls</h3>
 
-<ul>
+<table>
     {% for poll in polls_list %}
-
-    <li> <a href="{% url 'poll_detail' poll.pk %}"> {{ poll.question }} </a> </li>
-
+    <tr>
+        <td> <a href="{% url 'poll_detail' poll.pk %}"> {{ poll.question }} </a> </td>
+        <td><a href="#" class="btn btn-sm btn-dark">Vote</a></td>
+        <td><a href="{% url 'result' poll.pk %}" class="btn btn-sm btn-dark">View Results</a></td>
+    </tr>
     {% endfor %}
-</ul>
+</table>
 {% endblock content %}
