@@ -19,4 +19,4 @@ class PollsDetailView(DetailView):
 class PollsCreateView(CreateView):
     model = Polls
     template_name = "polls_create.html"
-    fields = ["owner", "question", "choice1", "choice2", "choice3", "choice4"]
+    fields = ["owner", "question", "choice1", "choice2", "choice3"]

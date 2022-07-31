@@ -11,8 +11,10 @@ class Polls(models.Model):
     question = models.CharField(max_length=200, null=False, blank=False)
     choice1 = models.CharField(max_length=200, null=False, blank=False)
     choice2 = models.CharField(max_length=200, null=False, blank=False)
-    choice3 = models.CharField(max_length=200, null=True, blank=True)
-    choice4 = models.CharField(max_length=200, null=True, blank=True)
+    choice3 = models.CharField(max_length=200, null=False, blank=False)
+    choice1_count = models.PositiveIntegerField(default=0)
+    choice2_count = models.PositiveIntegerField(default=0)
+    choice3_count = models.PositiveIntegerField(default=0)
     created_at = models.DateTimeField(auto_now=True)
 
     def __str__(self):
@@ -20,3 +22,6 @@ class Polls(models.Model):
 
     def get_absolute_url(self):
         return reverse("poll_detail", kwargs={"pk": self.pk})
+
+    def total(self):
+        return self.choice1_count + self.choice2_count + self.choice3_count
