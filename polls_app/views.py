@@ -26,3 +26,9 @@ class PollsCreateView(CreateView):
     model = Polls
     template_name = "polls_create.html"
     fields = ["owner", "question", "choice1", "choice2", "choice3"]
+
+
+def vote_view(request, poll_id):
+    poll = Polls.objects.get(pk=poll_id)
+    context = {"poll": poll}
+    return render(request, "vote.html", context)

@@ -7,7 +7,7 @@
     {% for poll in polls_list %}
     <tr>
         <td> <a href="{% url 'poll_detail' poll.pk %}"> {{ poll.question }} </a> </td>
-        <td><a href="#" class="btn btn-sm btn-dark">Vote</a></td>
+        <td><a href="{% url 'vote' poll.pk %}" class="btn btn-sm btn-dark">Vote</a></td>
         <td><a href="{% url 'result' poll.pk %}" class="btn btn-sm btn-dark">View Results</a></td>
     </tr>
     {% endfor %}
