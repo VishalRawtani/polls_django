@@ -28,7 +28,12 @@ class ResultView(DetailView):
 class PollsCreateView(LoginRequiredMixin, CreateView):
     model = Polls
     template_name = "polls_create.html"
-    fields = ["owner", "question", "choice1", "choice2", "choice3"]
+    fields = ["question", "choice1", "choice2", "choice3"]
+
+    def form_valid(self, form):
+        # Setting owner to currently logged in user
+        form.instance.owner = self.request.user
+        return super().form_valid(form)
 
 
 @login_required
