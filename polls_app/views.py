@@ -2,6 +2,8 @@ from django.shortcuts import render, redirect
 from django.views.generic import ListView, DetailView
 from django.views.generic.edit import CreateView
 from django.http import HttpResponse
+from django.contrib.auth.mixins import LoginRequiredMixin
+from django.contrib.auth.decorators import login_required
 
 from .models import Polls
 
@@ -23,12 +25,13 @@ class ResultView(DetailView):
     context_object_name = "poll"
 
 
-class PollsCreateView(CreateView):
+class PollsCreateView(LoginRequiredMixin, CreateView):
     model = Polls
     template_name = "polls_create.html"
     fields = ["owner", "question", "choice1", "choice2", "choice3"]
 
 
+@login_required
 def vote_view(request, poll_id):
     poll = Polls.objects.get(pk=poll_id)
     if request.method == "POST":
