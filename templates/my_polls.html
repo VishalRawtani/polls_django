@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+{% block content %}
+
+{% for poll in polls_list %}
+
+<div class="card bg-light mb-3" style="max-width: 25rem;">
+    <div class="card-body">
+        <h4 class="card-title">{{poll.question}}</h4>
+        <p class="card-text">
+            {{poll.choice1}} - {{poll.choice1_count}} <br>
+            {{poll.choice2}} - {{poll.choice2_count}} <br>
+            {{poll.choice3}} - {{poll.choice3_count}} <br>
+            <span style="font-weight:bold ;">Total - {{poll.total}}</span>
+        </p>
+    </div>
+    {% empty %}
+    You haven't created any polls yet
+</div>
+{% endfor %}
+{% endblock content %}

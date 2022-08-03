@@ -5,9 +5,11 @@ from .views import (
     PollsCreateView,
     ResultView,
     vote_view,
+    MyPollsListView,
 )
 
 urlpatterns = [
+    path("poll/mypolls", MyPollsListView.as_view(), name="my_polls"),
     path("poll/vote/<poll_id>", vote_view, name="vote"),
     path("poll/result/<int:pk>", ResultView.as_view(), name="result"),
     path("poll/new", PollsCreateView.as_view(), name="poll_new"),

@@ -56,3 +56,14 @@ def vote_view(request, poll_id):
         return redirect("result", poll_id)
     context = {"poll": poll}
     return render(request, "vote.html", context)
+
+
+class MyPollsListView(LoginRequiredMixin, ListView):
+    model = Polls
+    template_name = "my_polls.html"
+    ordering = "-id"
+
+    def get_queryset(self):
+        # Querying foreign key table username attribute
+        poll = Polls.objects.filter(owner__username=self.request.user)
+        return poll

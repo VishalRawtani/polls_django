@@ -28,6 +28,12 @@
                         <li class="nav-item">
                             <a class="nav-link" href="{% url 'poll_new' %}">Create Poll</a>
                         </li>
+                        {% if user.is_authenticated %}
+                        <li class="nav-item">
+                            <a class="nav-link" href="{% url 'my_polls' %}">My Polls</a>
+                        </li>
+                        {% endif %}
+
                     </ul>
                     <form class="d-flex">
                         {% if user.is_authenticated %}
