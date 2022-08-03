@@ -11,6 +11,8 @@ from .models import Polls
 class PollsListView(ListView):
     model = Polls
     template_name = "home.html"
+    ordering = "-id"
+    paginate_by = 10
 
 
 class PollsDetailView(DetailView):
