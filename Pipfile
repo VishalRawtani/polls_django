@@ -8,6 +8,7 @@ django = "*"
 psycopg2 = "*"
 environs = {extras = ["django"], version = "*"}
 whitenoise = "==6.2.0"
+gunicorn = "==20.1.0"
 
 [dev-packages]
 
