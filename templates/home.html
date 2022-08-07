@@ -6,12 +6,13 @@
 <table>
     {% for poll in polls_list %}
     <tr>
-        <td> <a href="{% url 'poll_detail' poll.pk %}"> {{ poll.question }} </a> </td>
+        <td class="text-muted" style="font-weight:bold ;"> {{ poll.question }} </td>
         <td><a href="{% url 'vote' poll.pk %}" class="btn btn-sm btn-dark">Vote</a></td>
         <td><a href="{% url 'result' poll.pk %}" class="btn btn-sm btn-dark">View Results</a></td>
     </tr>
     {% endfor %}
 </table>
+<br>
 <div class="pagination">
     <span class="step-links">
         {% if page_obj.has_previous %}
