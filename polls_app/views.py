@@ -1,9 +1,10 @@
 from django.shortcuts import render, redirect
 from django.views.generic import ListView, DetailView
-from django.views.generic.edit import CreateView
+from django.views.generic.edit import CreateView, DeleteView
 from django.http import HttpResponse
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.contrib.auth.decorators import login_required
+from django.urls import reverse_lazy
 
 from .models import Polls
 
@@ -67,3 +68,10 @@ class MyPollsListView(LoginRequiredMixin, ListView):
         # Querying foreign key table username attribute
         poll = Polls.objects.filter(owner__username=self.request.user)
         return poll
+
+
+class PollDeleteView(LoginRequiredMixin, DeleteView):
+    model = Polls
+    template_name = "poll_delete.html"
+    success_url = reverse_lazy("my_polls")
+    context_object_name = "poll"

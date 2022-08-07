@@ -11,10 +11,13 @@
             {{poll.choice2}} - {{poll.choice2_count}} <br>
             {{poll.choice3}} - {{poll.choice3_count}} <br>
             <span style="font-weight:bold ;">Total - {{poll.total}}</span>
+            <br><br>
+            <a class="btn btn-primary btn-sm" href="{% url 'poll_delete' poll.pk %}">Delete Poll</a>
         </p>
+
     </div>
-    {% empty %}
-    You haven't created any polls yet
 </div>
+{% empty %}
+You haven't created any polls yet
 {% endfor %}
 {% endblock content %}
